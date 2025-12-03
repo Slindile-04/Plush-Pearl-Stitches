@@ -1,0 +1,929 @@
+/* ================================
+   GLightbox Product Gallery Styling
+================================ */
+.card-img a.glightbox:not(:first-child) {
+  display: none;
+}
+/* ==========================
+   Plush Pearl Stitches CSS – Refactored
+   ========================== */
+
+/* ================================
+   Google Fonts
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* ================================
+   Root Variables
+================================ */
+:root {
+  --soft-pink: #F4B7B7;
+  --leaf-green: #4C7A4B;
+  --off-white: #FDFBF7;
+  --charcoal: #1C1C1C;
+  --flower-yellow: #F9D94A;
+  --contrast-brown: #5C3A2E;
+  --warm-caramel: #D19A6A;
+}
+
+/* ================================
+   Accessibility & Focus Styles
+================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px dashed var(--soft-pink);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ================================
+   Reset & Base Styles
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  color: var(--charcoal);
+  background-color: var(--off-white);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a,
+button {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+button:hover {
+  color: var(--soft-pink);
+}
+
+/* ================================
+   Typography Scale
+================================ */
+h1, .head {
+  font-size: 1.7rem;
+}
+
+@media (max-width: 900px) {
+  h1, .head {
+    font-size: 1.3rem;
+  }
+}
+
+h2 { font-size: 2.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+h3 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+p { font-size: 1rem; margin-bottom: 1rem; }
+
+/* ================================
+   Header & Navigation
+================================ */
+header {
+  background-color: var(--off-white);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left img {
+  height: 60px;
+  margin-right: 1rem;
+}
+
+.header-brand h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.header-brand .tagline {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.nav-listing {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+.nav-listing li a {
+  font-weight: 600;
+  position: relative;
+  /* Increased for better readability on desktop/laptops (~15% larger) */
+  font-size: 1.15rem;
+}
+
+.nav-listing li a:hover {
+  color: var(--soft-pink);
+}
+
+.nav-listing li a.active {
+  color: var(--soft-pink);
+  border-bottom: 2px solid var(--soft-pink);
+  font-weight: 700;
+}
+
+/* ================================
+   Mobile Menu Toggle
+================================ */
+#menu-toggle { display: none; }
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ================================
+   Sections & Headings
+================================ */
+section { 
+  padding: 3rem 2rem; 
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.head {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.head::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.5rem auto 0;
+  background: var(--soft-pink);
+  border-radius: 2px;
+}
+
+/* ================================
+   ===== About Section =====
+================================ */
+#aboutus {
+  padding: 5rem 5vw;
+  background-color: var(--off-white);
+}
+
+.head {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  color: var(--charcoal);
+}
+
+.head::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: var(--soft-pink);
+  margin: 1rem auto;
+}
+
+.divide {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  margin: 0;
+}
+
+.left-about, .right-about {
+  flex: 1;
+  padding: 0;
+}
+
+.left-about img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.right-about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--charcoal) !important;
+}
+
+.right-about p {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--charcoal);
+}
+
+.right-about strong {
+  color: var(--soft-pink);
+}
+
+@media (max-width: 900px) {
+  .divide {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .left-about img {
+    max-height: 300px;
+  }
+}
+
+/* ================================
+   Split Layout Utility
+================================ */
+.divide {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.divide .left,
+.divide .right {
+  flex: 1;
+}
+
+/* ================================
+   Buttons
+================================ */
+button {
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+button.H-Btn,
+a.H-Btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background: var(--charcoal);
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+button.H-Btn:hover,
+a.H-Btn:hover {
+  background: var(--soft-pink);
+  color: var(--charcoal);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 16px 2px var(--soft-pink);
+  border: 2px solid var(--charcoal);
+}
+
+button.H-Btn:active,
+a.H-Btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--charcoal);
+}
+
+/* ================================
+   Products Menu (Swiper) – Cleaned & Improved
+================================ */
+#menu {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.swiper {
+  padding: 2rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 300px;
+  height: 400px;
+  box-sizing: border-box;
+  max-width: 90vw; /* responsive on mobile */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-height: 420px;
+  max-width: 340px;
+  width: 100%;
+  padding: 1.5rem 1.2rem;
+  background: var(--off-white);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.09);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+.card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.b-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.b-text {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--charcoal);
+}
+
+/* ================================
+   Contact Section
+================================ */
+.contact-box {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cnct-left,
+.cnct-right { flex: 1; }
+
+.cnct-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cnct-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: -3.5rem;
+}
+
+.cnct-right img {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  min-height: 600px;
+  object-fit: contain;
+  margin: auto;
+  padding: 1rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea,
+select {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--soft-pink);
+}
+
+/* ================================
+   Footer
+================================ */
+footer {
+  background: var(--leaf-green);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+footer .social-links a {
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+footer .social-links a:hover {
+  color: var(--flower-yellow);
+}
+
+/* ================================
+   Responsive Styles
+================================ */
+@media (max-width: 992px) {
+  .swiper-slide {
+    width: 280px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-icon { display: block; }
+
+  .nav-listing {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--off-white);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  #menu-toggle:checked + .menu-icon + .nav-listing { display: flex; }
+
+  .divide { flex-direction: column; }
+  .contact-box { flex-direction: column; }
+
+  .swiper-slide {
+    width: 240px;
+    height: 300px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev { 
+    width: 40px; 
+    height: 40px;
+    display: flex !important;
+  }
+
+  .swiper-button-next::before,
+  .swiper-button-prev::before {
+    font-size: 1.2rem;
+  }
+}
+
+/* ================================
+   Hero Section
+================================ */
+#home {
+  padding: 4rem 5%;
+  background: linear-gradient(to right, var(--off-white) 50%, var(--soft-pink) 50%);
+}
+
+#home .divide {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+#home .left { flex: 1; padding-right: 3rem; }
+
+#home .left h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--charcoal);
+}
+
+#home .left p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--charcoal);
+}
+
+#home .head-btn { display: flex; gap: 1rem; }
+
+#home .H-Btn {
+  padding: 0.8rem 1.8rem;
+  background-color: var(--leaf-green);
+  color: var(--off-white);
+  border-radius: 50px;
+  font-weight: 600;
+  border: 2px solid var(--leaf-green);
+  transition: all 0.3s;
+}
+
+#home .H-Btn:hover {
+  background-color: var(--soft-pink);
+  border-color: var(--soft-pink);
+  color: var(--charcoal);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#home .right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#home .right img {
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transform: rotate(3deg) translateX(-40px) translateY(-20px) scale(0.98);
+  transition: transform 0.5s;
+}
+
+#home .right img:hover {
+  transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+}
+
+
+/* ==========================
+   Plush Pearl Stitches CSS – Swiper Optimized
+   ========================== */
+
+/* ================================
+   Swiper Slides & Cards
+================================ */
+.swiper {
+  padding: 2rem 0;
+  
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 400px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.b-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.b-text {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--charcoal);
+}
+
+/* Product Swiper Card Consistency */
+#menu .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 300px;
+  height: 400px;
+}
+
+#menu .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--off-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+#menu .card img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+#menu .card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ================================
+   Swiper Navigation Buttons
+================================ */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: transparent !important;
+  color: var(--leaf-green) !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  border: 2px solid var(--leaf-green);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 0 !important;
+  content: '' !important;
+  display: none !important;
+}
+
+.swiper-button-prev::before {
+  content: '<' !important;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--leaf-green);
+  display: block;
+}
+
+.swiper-button-next::before {
+  content: '>' !important;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--leaf-green);
+  display: block;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: var(--leaf-green) !important;
+  color: #fff !important;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swiper-button-next:hover::before,
+.swiper-button-prev:hover::before {
+  color: #fff !important;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   Responsive Breakpoints
+================================ */
+@media (max-width: 992px) {
+  .swiper-slide { width: 280px; }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide { width: 240px; }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-button-next::before,
+  .swiper-button-prev::before {
+    font-size: 1.4rem !important;
+  }
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
+section {
+  padding: 3rem 2rem;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 80px;
+}
+
+.head {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.head::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.5rem auto 0;
+  background: var(--soft-pink);
+  border-radius: 2px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.divide {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.left-about,
+.right-about {
+  flex: 1;
+  padding: 1rem;
+}
+
+.left-about img {
+  max-width: 350px;
+  max-height: 480px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 300px;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-content .b-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.social-links a i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+
+/* Purpose Section Typography */
+#purpose {
+  padding: 5rem 5%;
+  background-color: var(--off-white);
+}
+
+#purpose .purpose-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#purpose p, 
+#purpose ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+#purpose h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}

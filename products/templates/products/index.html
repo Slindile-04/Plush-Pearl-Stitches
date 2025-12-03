@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plush Pearl Stitches</title>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_io/apple-touch-icon.png' %}">
+  <!-- Main favicon for desktop/laptop browsers -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_io/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_io/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/favicon_io/site.webmanifest' %}"
+  
+  <!-- Google Fonts (Playfair Display) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons for menu, socials, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Swiper CSS (slider for products) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+  <!-- Your Custom Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+<!-- small IG logo-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+ 
+
+
+</head>
+
+<body>
+  <header role="banner">
+    <nav id="navbar" role="navigation" aria-label="Main menu">
+      <div class="nav-left">
+        <img src="{% static 'images/logo.png' %}" alt="Plush Pearl Stitches logo" />
+        <div class="header-brand">
+          <h1>Plush Pearl Stitches</h1>
+          <p class="tagline">by Lindokuhle Pearl Mnisi</p>
+        </div>
+      </div>
+      <div class="nav-right">
+        <input type="checkbox" id="menu-toggle" hidden>
+        <label for="menu-toggle" class="menu-icon">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </label>
+        <ul class="nav-listing">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#aboutus">About Me</a></li>
+          <li><a href="#menu">Products</a></li>
+          <li><a href="#purpose">Purpose</a></li>
+          <li><a href="#contact">Contact Me</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOMEPAGE SECTION -->
+    <section id="home">
+      <div class="divide">
+        <div class="left">
+          <h1>Handmade With Love,<br>One Stitch at a Time.</h1>
+          <p>
+            At Plush Pearl Stitches, every piece is more than just crochet—<br>
+            it's a story woven with patience, creativity, and care.<br>
+            From cozy wearables to cheerful accessories,<br>
+            each handmade item is designed to bring warmth and joy into your life.
+          </p>
+        </div>
+        <div class="right">
+          <img src="{% static 'images/teddy.jpg' %}" alt="Handmade Crochet Teddy Bear from Plush Pearl Stitches">
+        </div>
+      </div>
+    </section>
+    
+    <!-- ABOUT ME -->
+    <section id="aboutus">
+      <h1 class="head">About Me</h1>
+      <div class="divide">
+        <div class="left-about">  
+          <img src="{% static 'images/lindokuhle.jpg' %}" alt="Plush Pearl Stitches's founder">
+        </div>
+        <div class="right-about">
+          <h2>WELCOME TO PLUSH PEARL STITCHES WEBSITE</h2>
+          <p>
+            Hi there, and welcome to <strong>Plush Pearl Stitches</strong>.
+            <br><br>
+            Crochet has been close to my heart since my teenage years. What began as a simple hobby— just me, a hook, and some yarn— soon became a way to relax, express creativity, and make thoughtful little gifts for family and friends. Over time, the joy of seeing smiles on their faces inspired me to dream bigger.
+            <br><br>
+            In 2024, I finally took the step to share my work with the world, and Plush Pearl Stitches was born. Every item you'll find here is handmade with care, patience, and love. From the very first loop to the last stitch, each piece carries a bit of my story and passion. No two creations are exactly alike, which means when you choose something from Plush Pearl Stitches, you're getting something truly unique.
+            <br><br>
+            My mission is simple: to spread <strong>warmth</strong>, <strong>comfort</strong>, and <strong>happiness</strong> through crochet. Whether it's a cozy wearable, a cheerful accessory, or a decorative piece to brighten your home, I believe handmade has a special kind of magic that store-bought just can't match.
+            <br><br>
+            <strong>Stay Cozy,</strong><br>
+            <em>Plush Pearl Stitches</em>🧶
+          </p>
+          <div class="head-btn">
+            <a href="#about" class="H-Btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+<section id="menu">
+  <h1 class="head">Browse My Collection</h1>
+
+  <!-- Swiper main container -->
+  <div class="swiper mySwiper">
+
+    <!-- Wrapper for slides -->
+    <div class="swiper-wrapper">
+
+      <!-- ITEM 1 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <!-- Main image -->
+            <a href="{% static 'images/blanket.jpg' %}" class="glightbox" data-gallery="product1">
+              <img src="{% static 'images/blanket.jpg' %}" alt="Handmade Blanket">
+            </a>
+            <!-- Extra images (hidden, but part of same gallery) -->
+            <a href="{% static 'images/blanket2.jpg' %}" class="glightbox" data-gallery="product1"></a>
+            <a href="{% static 'images/blanket3.jpg' %}" class="glightbox" data-gallery="product1"></a>
+
+          </div>
+          <div class="card-content">
+            <span class="b-title">Crochet Blanket</span>
+            <p class="b-text">My handmade blankets are made to keep you warm throughout a cold night. Enjoy the perfect balance between warmth and comfort.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+             <!-- Main image -->
+            <a href="{% static 'images/sweater3.webp' %}" class="glightbox" data-gallery="product2">
+              <img src="{% static 'images/sweater3.webp' %}" alt="A handcrafted crochet sweater with intricate patterns, shown in a neutral tone.">
+            </a>
+             <!-- Extra images (hidden, but part of same gallery) -->
+            <a href="{% static 'images/sweater.jpg' %}" class="glightbox" data-gallery="product2"></a>
+            <a href="{% static 'images/sweater2.jpg' %}" class="glightbox" data-gallery="product2"></a>
+            <a href="{% static 'images/sweater4.jpg' %}" class="glightbox" data-gallery="product2"></a>
+            <a href="{% static 'images/sweater5.jpg' %}" class="glightbox" data-gallery="product2"></a>
+
+
+          </div>
+          <div class="card-content">
+            <span class="b-title">Crochet Sweater</span>
+            <p class="b-text">My crochet sweaters are not only stylish but also lovingly crafted for exceptional comfort and durability. Each piece features unique patterns and is made with premium, soft yarn to keep you cozy and fashionable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/handbag.jpg' %}" class="glightbox" data-gallery="product3">
+              <img src="{% static 'images/handbag.jpg' %}" alt="A stylish handmade crochet handbag with a unique design, perfect for everyday use.">
+            </a>
+            <a href="{% static 'images/handbag2.jpg' %}" class="glightbox" data-gallery="product3"></a>
+            <a href="{% static 'images/handbag3.jpg' %}" class="glightbox" data-gallery="product3"></a>
+            <a href="{% static 'images/handbag4.jpg' %}" class="glightbox" data-gallery="product3"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Crochet Handbag</span>
+            <p class="b-text">My crochet handbags are not only stylish but also surprisingly sturdy and practical. Each one is designed to be both a statement piece and a functional everyday accessory, woven with strong yarn for lasting quality.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/scarf.jpg' %}" class="glightbox" data-gallery="product4">
+              <img src="{% static 'images/scarf.jpg' %}" alt="A soft, chunky knit crochet scarf in a warm autumn hue.">
+            </a>
+            <a href="{% static 'images/scarf2.jpg' %}" class="glightbox" data-gallery="product4"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Cozy Scarf</span>
+            <p class="b-text">Woven with extra-soft, plush yarn, this scarf provides lightweight warmth without the bulk. Its generous length and textured stitch make it the perfect statement accessory for crisp weather.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/beanie.jpg' %}" class="glightbox" data-gallery="product5">
+              <img src="{% static 'images/beanie.jpg' %}" alt="Stylish and warm handmade crochet beanies with a ribbed texture.">
+            </a>
+            <a href="{% static 'images/beanie3.jpg' %}" class="glightbox" data-gallery="product5"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Textured Ribbed Beanies</span>
+            <p class="b-text">Stretchable and soft, these beanies are designed for a comfortable fit that keeps you warm. The elegant ribbed pattern adds a touch of sophistication to any casual outfit.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/scrunchie3.jpg' %}" class="glightbox" data-gallery="product6">
+              <img src="{% static 'images/scrunchie3.jpg' %}" alt="A set of fluffy, colorful handmade crochet scrunchies on a wooden surface.">
+            </a>
+            <a href="{% static 'images/scrunchie2.jpg' %}" class="glightbox" data-gallery="product6"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Fluffy Yarn Scrunchies</span>
+            <p class="b-text">Gentle on your hair and full of playful texture, these scrunchies add a pop of color and a soft, cozy feel to your everyday style without leaving creases.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/pillow.jpg' %}" class="glightbox" data-gallery="product7">
+              <img src="{% static 'images/pillow.jpg' %}" alt="A decorative handmade crochet pillow with a intricate mandala pattern on a cozy chair.">
+            </a>
+            <a href="{% static 'images/pillow2.jpg' %}" class="glightbox" data-gallery="product7"></a>
+            <a href="{% static 'images/pillow3.jpg' %}" class="glightbox" data-gallery="product7"></a>
+
+          </div>
+          <div class="card-content">
+            <span class="b-title">Crochet Decorative Pillow</span>
+            <p class="b-text">Add a handcrafted touch to your home decor. This pillow combines beautiful designs with the comfortable, inviting texture of premium cotton yarn.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/mittens.png' %}" class="glightbox" data-gallery="product8">
+              <img src="{% static 'images/mittens.png' %}" alt="A pair of soft, chunky crochet mittens in a warm autumn hue.">
+            </a>
+            <a href="{% static 'images/mittens2.jpg' %}" class="glightbox" data-gallery="product8"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Cozy Mittens</span>
+            <p class="b-text">Crafted with ultra-soft, plush yarn, these mittens offer snug warmth without sacrificing flexibility. The textured stitch and fitted cuff make them a charming and practical companion for chilly days.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ITEM 9 -->
+       <div class="swiper-slide">
+        <div class="card">
+          <div class="card-img">
+            <a href="{% static 'images/rug.jpg' %}" class="glightbox" data-gallery="product9">
+              <img src="{% static 'images/rug.jpg' %}" alt="A handmade crochet rug with intricate stitches, adding warmth and charm to a living space.">
+            </a>
+            <a href="{% static 'images/rug2.jpg' %}" class="glightbox" data-gallery="product9"></a>
+            <a href="{% static 'images/rug3.jpg' %}" class="glightbox" data-gallery="product9"></a>
+          </div>
+          <div class="card-content">
+            <span class="b-title">Handmade Crochet Rug</span>
+            <p class="b-text">Crafted with care and detail, this cozy crochet rug brings warmth, texture, and a touch of handmade charm to any room, making it both stylish and functional.</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div><!-- end .swiper-wrapper -->
+
+    <!-- swiper pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- swiper navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+  </div> <!-- end .swiper -->
+</section>
+
+        
+    <!-- PURPOSE -->
+    <section id="purpose">
+      <div class="purpose-container">
+        <h2>My Purpose & How To Order</h2>
+        <div class="purpose-content">
+          <p>Welcome to my digital gallery! This website serves as a showcase for my passion—creating unique, handcrafted crochet pieces.</p>
+          <p>Think of it as my ongoing lookbook. Every item you see is a sample of what I can create. <strong>If something catches your eye, please don't hesitate to let me know!</strong></p>
+          <br>
+
+          <h2>How It Works:</h2>
+          <ul>
+            <li>See an item you love? Mention it in your message on the <a href="#contact">"Contact Me"</a> page.</li>
+            <li>Want something you don't see here? I welcome special orders! Select the "Special Order" option in the drop-down menu & describe your vision on the contact form.</li>
+            <li>Once I receive your message, we'll discuss all the details together—including customization, pricing, and delivery options.</li>
+          </ul>
+          <p>Thank you so much for taking the time to explore my work. I look forward to the possibility of creating something beautiful just for you.</p>
+          <br><br>
+          <h4>Pssst!...don't forget to follow my Instagram, link down below</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT US -->
+    <section id="contact">
+      <h1 class="head">Get in Touch</h1>
+      <div class="contact-box">
+        <div class="cnct-left">
+          <h3>I'd love to hear from you! Contact me for orders or franchise opportunities:</h3>
+          <form action="#" class="cnct-Form">
+            <div class="input-row">
+              <div class="input-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="e.g. Lindokuhle Mnisi" required>
+              </div>
+              <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Phone</label>
+                <input type="tel" placeholder="+27 12 345 6789" required>
+              </div>
+              <div class="input-group">
+                <label>What's this about?</label>
+                <select>
+                  <option>General Inquiry</option>
+                  <option>Special Order</option>
+                  <option>Franchise Opportunity</option>
+                  <option>Feedback</option>
+                </select>
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Your Plush Message:</label>
+              <textarea rows="4" placeholder="Tell me about your crochet needs. For example: 'I'd like a custom blanket like the one in your gallery,' or 'I'm interested in a special order for a baby hat.'"></textarea>
+            </div>
+            <div class="newsletter-opt">
+              <input type="checkbox" id="newsletter">
+              <label for="newsletter">Subscribe to my Plush Pearl Stitches newsletter</label>
+            </div>
+            <button type="submit" class="H-Btn">Send Message</button>
+          </form>
+        </div>
+        <div class="cnct-right">
+          <img src="{% static 'images/logo.png' %}" alt="Plush Pearl Stitches's Logo">
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- FOOTER SECTION -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <p>© 2024 Plush Pearl Stitches by Lindokuhle Pearl Mnisi. All rights reserved.</p>
+      <p>Handmade with love.</p>
+      <div class="social-links">
+  <a href="https://www.instagram.com/plush_pearl_stitcheez?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Visit my Instagram" target="_blank" rel="noopener">
+          <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+  <script src="{% static 'js/script.js' %}" defer></script>
+
+
+  <!-- note to self: improve the website as your skills grow. -->
+   
+
+  
+</body>
+</html>
