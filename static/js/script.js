@@ -160,22 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ================================
-// 5. Back to Top Button
-// ================================
-const backToTopBtn = document.getElementById('backToTop');
-if (backToTopBtn) {
-  window.addEventListener('scroll', () => {
-    backToTopBtn.classList.toggle('show', window.scrollY > 300);
-    backToTopBtn.classList.toggle('hide', window.scrollY <= 300);
-  });
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// ================================
-// 6. Fade-In Animation on Scroll (Reusable)
+// 5. Fade-In Animation on Scroll (Reusable)
 // ================================
 const fadeInElements = document.querySelectorAll('.bTn');
 
