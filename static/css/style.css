@@ -52,6 +52,8 @@ body {
   color: var(--charcoal);
   background-color: var(--off-white);
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 img {
@@ -99,12 +101,17 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .nav-left {
@@ -163,11 +170,13 @@ header {
    Sections & Headings
 ================================ */
 section { 
-  padding: 3rem 2rem; 
+  padding: 3rem 2rem;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .head {
@@ -194,6 +203,8 @@ section {
 #aboutus {
   padding: 5rem 5vw;
   background-color: var(--off-white);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .head {
@@ -223,13 +234,13 @@ section {
 .left-about, .right-about {
   flex: 1;
   padding: 0;
+  min-width: 0;
 }
 
 .left-about img {
-  width: auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 350px;
   height: auto;
-  max-height: 250px;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -402,10 +413,15 @@ a.H-Btn:active {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cnct-left,
-.cnct-right { flex: 1; }
+.cnct-right { 
+  flex: 1;
+  min-width: 0;
+}
 
 .cnct-Form {
   display: flex;
@@ -422,9 +438,8 @@ a.H-Btn:active {
 
 .cnct-right img {
   width: 100%;
-  max-width: 600px;
-  height: 100%;
-  min-height: 600px;
+  max-width: 700px;
+  height: auto;
   object-fit: contain;
   margin: auto;
   padding: 1rem;
@@ -433,12 +448,15 @@ a.H-Btn:active {
 .input-row {
   display: flex;
   gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-group {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 input,
@@ -447,6 +465,8 @@ select {
   padding: 0.6rem;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input:focus,
@@ -530,6 +550,8 @@ footer .social-links a:hover {
 #home {
   padding: 4rem 5%;
   background: linear-gradient(to right, var(--off-white) 50%, var(--soft-pink) 50%);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #home .divide {
@@ -541,7 +563,11 @@ footer .social-links a:hover {
   gap: 2rem;
 }
 
-#home .left { flex: 1; padding-right: 3rem; }
+#home .left { 
+  flex: 1; 
+  padding-right: 3rem;
+  min-width: 0;
+}
 
 #home .left h1 {
   font-size: 3.5rem;
@@ -580,17 +606,27 @@ footer .social-links a:hover {
   flex: 1;
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
 }
 
 #home .right img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transform: rotate(3deg) translateX(-40px) translateY(-20px) scale(0.98);
   transition: transform 0.5s;
+  cursor: pointer;
 }
 
 #home .right img:hover {
+  transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+}
+
+#home .right img.upright {
   transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
 }
 
@@ -926,4 +962,238 @@ p {
 #purpose h2 {
   font-size: 1.9rem;
   margin-bottom: 1rem;
+}
+
+/* ================================
+   Mobile / Small Tablet Overrides
+   Reduces header and hero sizes for better mobile fit
+================================ */
+@media (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 1rem 1.2rem;
+  }
+
+  .nav-left img {
+    height: 52px;
+  }
+
+  .header-brand h1 {
+    font-size: 1.3rem;
+  }
+
+  #home {
+    padding: 2rem 1.5rem;
+    min-height: 70vh;
+    background: var(--off-white);
+  }
+
+  #home .divide {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #home .left {
+    padding-right: 0;
+  }
+
+  #home .left h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  #home .left p {
+    font-size: 0.95rem;
+  }
+
+  #home .H-Btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  #home .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  #home .right img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    transform: rotate(3deg) scale(0.98);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  #home .right img:hover,
+  #home .right img:active {
+    transform: rotate(3deg) scale(1.02);
+  }
+
+  /* About section adjustments */
+  #aboutus {
+    padding: 3rem 1.5rem;
+  }
+
+  .left-about img {
+    max-width: 250px;
+    max-height: 350px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .right-about h2 {
+    font-size: 1.6rem;
+  }
+
+  .right-about p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Purpose section for tablet */
+  #purpose h2 {
+    font-size: 1.6rem;
+  }
+
+  #purpose p,
+  #purpose ul {
+    font-size: 1rem;
+  }
+
+  /* Section general adjustments */
+  section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .head {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 0.8rem 1rem;
+  }
+
+  .nav-left img {
+    height: 45px;
+    margin-right: 0.7rem;
+  }
+
+  .header-brand h1 {
+    font-size: 1.1rem;
+  }
+
+  .header-brand .tagline {
+    font-size: 0.8rem;
+  }
+
+  .nav-listing li a {
+    font-size: 0.95rem;
+  }
+
+  #home {
+    padding: 1.5rem 1rem;
+    min-height: 60vh;
+  }
+
+  #home .left h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  #home .left p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  #home .H-Btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  #home .right img {
+    max-width: 250px;
+    transform: rotate(3deg) scale(0.98);
+    transition: transform 0.3s ease;
+  }
+
+  #home .right img:hover,
+  #home .right img:active {
+    transform: rotate(3deg) scale(1.02);
+  }
+
+  /* About section */
+  #aboutus {
+    padding: 2rem 1rem;
+  }
+
+  .left-about img {
+    max-width: 200px;
+    max-height: 300px;
+  }
+
+  .right-about h2 {
+    font-size: 1.5rem;
+  }
+
+  .right-about p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Purpose section */
+  #purpose h2 {
+    font-size: 1.5rem;
+  }
+
+  #purpose p,
+  #purpose ul {
+    font-size: 0.95rem;
+  }
+
+  /* Contact section */
+  .cnct-left h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  section {
+    padding: 2rem 1rem;
+  }
+
+  .head {
+    font-size: 1.6rem;
+  }
+
+  /* Contact form */
+  .input-row {
+    flex-direction: column;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 0.6rem;
+    width: 100%;
+  }
+
+  /* Contact section image */
+  .cnct-right img {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-top: 2rem;
+  }
 }

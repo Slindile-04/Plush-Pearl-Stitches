@@ -117,18 +117,23 @@ window.addEventListener('scroll', () => {
 });
 
 // ================================
-// 3. Smooth Scroll for Anchor Links
+// 3. Smooth Scroll for Anchor Links & Close Mobile Menu
 // ================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      // Close mobile menu after clicking a link
+      const menuToggle = document.getElementById('menu-toggle');
+      if (menuToggle) menuToggle.checked = false;
+    }
   });
 });
 
 // ================================
-// 4. Scroll-Spy for Navigation Links
+// 4. Scroll-Spy for Navigation Links (Improved)
 // ================================
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-listing li a');
@@ -140,15 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentId = sections[0].id;
     sections.forEach(section => {
       const topOffset = section.getBoundingClientRect().top;
-      if (topOffset <= window.innerHeight / 2) currentId = section.id;
+      if (topOffset <= window.innerHeight / 3) currentId = section.id;
     });
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+      const href = link.getAttribute('href');
+      const isActive = href === `#${currentId}`;
+      link.classList.toggle('active', isActive);
     });
   };
 
   updateActiveLink();
   window.addEventListener('scroll', updateActiveLink);
+  window.addEventListener('resize', updateActiveLink);
 });
 
 // ================================
@@ -190,4 +198,97 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof GLightbox !== 'undefined') {
     GLightbox({ selector: '.glightbox' });
   }
+});
+
+// ================================
+// 8. Teddy Image Click Handler (Stand Upright)
+// ================================
+document.addEventListener('DOMContentLoaded', function() {
+  const teddyImg = document.querySelector('#home .right img');
+  if (teddyImg) {
+    teddyImg.style.cursor = 'pointer';
+    
+    // Handle click on desktop
+    teddyImg.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('upright');
+    });
+    
+    // Handle touch on mobile
+    teddyImg.addEventListener('touchend', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('upright');
+    }, { passive: true });
+  }
+});
+
+// ================================
+// 9. Contact Form Handler (Prevent Reload & Download as .txt)
+// ================================
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.querySelector('.cnct-Form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page reload
+      
+      // Get form values
+      const inputs = this.querySelectorAll('input, select, textarea');
+      const labels = this.querySelectorAll('label');
+      
+      let formData = '';
+      let labelIndex = 0;
+      
+      inputs.forEach(input => {
+        const label = labels[labelIndex];
+        const labelText = label ? label.textContent.trim() : '';
+        const inputValue = input.value.trim();
+        
+        if (inputValue) {
+          formData += `${labelText}: ${inputValue}\n`;
+        }
+        labelIndex++;
+      });
+      
+      // Create and download .txt file
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(formData));
+      element.setAttribute('download', `contact_form_${new Date().getTime()}.txt`);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+      
+      // Show success message
+      alert('Message received! Your information has been downloaded as a text file.\n\nForm Data:\n\n' + formData);
+      
+      // Reset form
+      this.reset();
+    });
+  }
+});
+
+// ================================
+// 10. Button Event Handling (Ensure all buttons are responsive)
+// ================================
+document.addEventListener('DOMContentLoaded', function() {
+  // Ensure all form buttons work properly on mobile
+  const submitButtons = document.querySelectorAll('button[type="submit"]');
+  submitButtons.forEach(button => {
+    button.addEventListener('touchstart', function(e) {
+      // Prevent double-tap zoom
+      if (e.touches.length === 1) {
+        this.style.opacity = '0.8';
+      }
+    }, { passive: true });
+    
+    button.addEventListener('touchend', function(e) {
+      this.style.opacity = '1';
+    }, { passive: true });
+
+    button.addEventListener('click', function(e) {
+      // Ensure click is registered
+      console.log('Button clicked:', this);
+    });
+  });
 });
