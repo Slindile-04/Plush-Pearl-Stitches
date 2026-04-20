@@ -53,12 +53,17 @@ textarea:focus-visible {
 }
 
 /* ================================
-   Reset & Base Styles
+   Reset & Base Styles (Mobile-First)
 ================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 60px;
+  font-size: 16px;
 }
 
 body {
@@ -68,6 +73,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 img {
@@ -89,28 +96,73 @@ button:hover {
 }
 
 /* ================================
-   Typography Scale
+   Typography Scale (Mobile-First)
 ================================ */
 h1, .head {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
-@media (max-width: 900px) {
+h2 { 
+  font-size: 1.4rem; 
+  font-weight: 600; 
+  margin-bottom: 0.75rem; 
+}
+
+h3 { 
+  font-size: 1.2rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+}
+
+p { 
+  font-size: 0.95rem; 
+  margin-bottom: 1rem; 
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
   h1, .head {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+  }
+
+  h2 { 
+    font-size: 1.6rem; 
+  }
+
+  h3 { 
+    font-size: 1.4rem; 
+  }
+
+  p { 
+    font-size: 1rem; 
   }
 }
 
-h2 { font-size: 2.25rem; font-weight: 600; margin-bottom: 0.75rem; }
-h3 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
-p { font-size: 1rem; margin-bottom: 1rem; }
+/* Desktop and up */
+@media (min-width: 1024px) {
+  h1, .head {
+    font-size: 2rem;
+  }
+
+  h2 { 
+    font-size: 2rem; 
+  }
+
+  h3 { 
+    font-size: 1.75rem; 
+  }
+
+  p { 
+    font-size: 1.05rem; 
+  }
+}
 
 /* ================================
-   Header & Navigation
+   Header & Navigation (Mobile-First)
 ================================ */
 header {
   background-color: var(--off-white);
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   border-bottom: 1px solid #e5e5e5;
   position: sticky;
   top: 0;
@@ -131,33 +183,37 @@ header {
 .nav-left {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-left img {
-  height: 60px;
-  margin-right: 1rem;
+  height: 48px;
+  max-width: 100%;
+  width: auto;
 }
 
 .header-brand h1 {
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .header-brand .tagline {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #555;
+  margin-top: 0.2rem;
 }
 
 .nav-listing {
-  display: flex;
+  display: none;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1rem;
 }
+
 .nav-listing li a {
   font-weight: 600;
   position: relative;
-  /* Increased for better readability on desktop/laptops (~15% larger) */
-  font-size: 1.15rem;
+  font-size: 0.95rem;
 }
 
 .nav-listing li a:hover {
@@ -173,19 +229,87 @@ header {
 /* ================================
    Mobile Menu Toggle
 ================================ */
-#menu-toggle { display: none; }
+#menu-toggle { 
+  display: none; 
+}
+
 .menu-icon {
-  display: none;
+  display: block;
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  .nav-left img {
+    height: 52px;
+    margin-right: 1rem;
+  }
+
+  .header-brand h1 {
+    font-size: 1.3rem;
+  }
+
+  .header-brand .tagline {
+    font-size: 0.9rem;
+  }
+
+  .nav-listing {
+    display: flex;
+  }
+
+  .nav-listing li a {
+    font-size: 1rem;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  .nav-left img {
+    height: 60px;
+    margin-right: 1rem;
+  }
+
+  .header-brand h1 {
+    font-size: 2rem;
+  }
+
+  .header-brand .tagline {
+    font-size: 1.1rem;
+  }
+
+  .nav-listing {
+    gap: 1.5rem;
+  }
+
+  .nav-listing li a {
+    font-size: 1.15rem;
+  }
 }
 
 /* ================================
-   Sections & Headings
+   Sections & Headings (Mobile-First)
 ================================ */
 section { 
-  padding: 3rem 2rem;
-  min-height: 90vh;
+  padding: 2rem 1rem;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,7 +318,7 @@ section {
 }
 
 .head {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   text-align: center;
   text-transform: uppercase;
@@ -204,18 +328,58 @@ section {
 .head::after {
   content: '';
   display: block;
-  width: 60px;
+  width: 50px;
   height: 3px;
   margin: 0.5rem auto 0;
   background: var(--soft-pink);
   border-radius: 2px;
 }
 
+/* Tablet and up */
+@media (min-width: 768px) {
+  section { 
+    padding: 2.5rem 1.5rem;
+    min-height: 70vh;
+  }
+
+  .head {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .head::after {
+    width: 60px;
+    height: 3px;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  section { 
+    padding: 3rem 2rem;
+    min-height: 90vh;
+  }
+
+  .head {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .head::after {
+    width: 100px;
+    height: 4px;
+  }
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
 /* ================================
-   ===== About Section =====
+   ===== About Section (Mobile-First) =====
 ================================ */
 #aboutus {
-  padding: 5rem 5vw;
+  padding: 2rem 1rem;
   background-color: var(--off-white);
   width: 100%;
   box-sizing: border-box;
@@ -223,29 +387,22 @@ section {
 
 .head {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
   color: var(--charcoal);
 }
 
-.head::after {
-  content: '';
-  display: block;
-  width: 100px;
-  height: 4px;
-  background-color: var(--soft-pink);
-  margin: 1rem auto;
-}
-
 .divide {
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 2rem;
   width: 100%;
   margin: 0;
 }
 
-.left-about, .right-about {
+.left-about, 
+.right-about {
   flex: 1;
   padding: 0;
   min-width: 0;
@@ -253,26 +410,23 @@ section {
 
 .left-about img {
   width: 100%;
-  max-width: 350px;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1.5rem;
 }
 
-
 .right-about h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
   color: var(--charcoal) !important;
 }
 
 .right-about p {
   margin-bottom: 0.75rem;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: var(--charcoal);
 }
 
@@ -280,13 +434,68 @@ section {
   color: var(--soft-pink);
 }
 
-@media (max-width: 900px) {
+/* Mobile devices */
+@media (max-width: 767px) {
+  .left-about img {
+    max-width: 65%;
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  #aboutus {
+    padding: 3rem 1.5rem;
+  }
+
+  .head {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+
   .divide {
-    flex-direction: column;
+    flex-direction: row;
     gap: 2rem;
   }
+
   .left-about img {
-    max-height: 300px;
+    max-width: none;
+  }
+
+  .right-about h2 {
+    font-size: 1.6rem;
+  }
+
+  .right-about p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  #aboutus {
+    padding: 5rem 5vw;
+  }
+
+  .head {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .divide {
+    gap: 3rem;
+  }
+
+  .left-about img {
+    max-width: 60%;
+  }
+
+  .right-about h2 {
+    font-size: 1.8rem;
+  }
+
+  .right-about p {
+    font-size: 1.1rem;
   }
 }
 
@@ -306,19 +515,19 @@ section {
 }
 
 /* ================================
-   Buttons
+   Buttons (Mobile-First)
 ================================ */
 button {
   border: none;
   font-family: 'Playfair Display', serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 button.H-Btn,
 a.H-Btn {
   display: inline-block;
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1rem;
   background: var(--charcoal);
   color: #fff;
   border-radius: 5px;
@@ -347,18 +556,42 @@ a.H-Btn:active {
   border: 2px solid var(--charcoal);
 }
 
+/* Tablet and up */
+@media (min-width: 768px) {
+  button.H-Btn,
+  a.H-Btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  button.H-Btn,
+  a.H-Btn {
+    padding: 0.8rem 1.8rem;
+  }
+}
+
 /* ================================
-   Products Menu (Swiper) – Cleaned & Improved
+   Products Menu (Swiper) – Mobile-First
 ================================ */
 #menu {
   text-align: center;
   padding: 4rem 2rem;
+  position: relative;
+  width: 100%;
 }
 
 .swiper {
-  padding: 2rem 0;
   width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
   box-sizing: border-box;
+}
+
+.swiper-wrapper {
+  display: flex;
 }
 
 .swiper-slide {
@@ -368,7 +601,7 @@ a.H-Btn:active {
   width: 300px;
   height: 400px;
   box-sizing: border-box;
-  max-width: 90vw; /* responsive on mobile */
+  flex-shrink: 0;
 }
 
 .card {
@@ -381,7 +614,7 @@ a.H-Btn:active {
   width: 100%;
   padding: 1.5rem 1.2rem;
   background: var(--off-white);
-  border-radius: 14px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.09);
   transition: transform 0.3s ease;
   box-sizing: border-box;
@@ -420,13 +653,62 @@ a.H-Btn:active {
   color: var(--charcoal);
 }
 
+/* Responsive: Tablet */
+@media (max-width: 992px) {
+  #menu {
+    padding: 3rem 1.5rem;
+  }
+
+  .swiper-slide {
+    width: 280px;
+    height: 350px;
+  }
+
+  .card img {
+    max-height: 160px;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  #menu {
+    padding: 2rem 1rem;
+  }
+
+  .swiper-slide {
+    width: 260px;
+    height: 330px;
+  }
+
+  .card {
+    min-height: auto;
+    max-width: 260px;
+    padding: 1rem 0.9rem;
+  }
+
+  .card img {
+    max-height: 150px;
+  }
+
+  .b-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .b-text {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+}
+
 /* ================================
-   Contact Section
+   Contact Section (Mobile-First)
 ================================ */
 .contact-box {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
 }
@@ -447,20 +729,21 @@ a.H-Btn:active {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin-top: -3.5rem;
+  margin-top: 0;
 }
 
 .cnct-right img {
   width: 100%;
-  max-width: 700px;
+  max-width: 280px;
   height: auto;
   object-fit: contain;
   margin: auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .input-row {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   width: 100%;
   box-sizing: border-box;
@@ -476,11 +759,14 @@ a.H-Btn:active {
 input,
 textarea,
 select {
-  padding: 0.6rem;
+  padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  min-height: 44px;
 }
 
 input:focus,
@@ -488,6 +774,35 @@ textarea:focus,
 select:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--soft-pink);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .contact-box {
+    flex-direction: row;
+  }
+
+  .input-row {
+    flex-direction: row;
+  }
+
+  .cnct-right img {
+    max-width: 400px;
+    margin-top: -1.5rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .input-row {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .cnct-right img {
+    max-width: 700px;
+    margin-top: -3.5rem;
+  }
 }
 
 /* ================================
@@ -509,103 +824,69 @@ footer .social-links a:hover {
   color: var(--flower-yellow);
 }
 
-/* ================================
-   Responsive Styles
-================================ */
-@media (max-width: 992px) {
-  .swiper-slide {
-    width: 280px;
-    height: 350px;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-icon { display: block; }
-
-  .nav-listing {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: var(--off-white);
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  #menu-toggle:checked + .menu-icon + .nav-listing { display: flex; }
-
-  .divide { flex-direction: column; }
-  .contact-box { flex-direction: column; }
-
-  .swiper-slide {
-    width: 240px;
-    height: 300px;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev { 
-    width: 40px; 
-    height: 40px;
-    display: flex !important;
-  }
-
-  .swiper-button-next::before,
-  .swiper-button-prev::before {
-    font-size: 1.2rem;
-  }
-}
 
 /* ================================
-   Hero Section
+   Hero Section (Mobile-First)
 ================================ */
 #home {
-  padding: 4rem 5%;
-  background: linear-gradient(to right, var(--off-white) 50%, var(--soft-pink) 50%);
+  padding: 1.5rem 1rem;
+  background: var(--off-white);
   width: 100%;
   box-sizing: border-box;
 }
 
 #home .divide {
   display: flex;
+  flex-direction: column;
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 #home .left { 
   flex: 1; 
-  padding-right: 3rem;
+  padding-right: 0;
   min-width: 0;
+  text-align: center;
 }
 
 #home .left h1 {
-  font-size: 3.5rem;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
   color: var(--charcoal);
 }
 
 #home .left p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
   color: var(--charcoal);
 }
 
-#home .head-btn { display: flex; gap: 1rem; }
+#home .head-btn { 
+  display: flex; 
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
 
 #home .H-Btn {
-  padding: 0.8rem 1.8rem;
+  padding: 0.75rem 1.5rem;
   background-color: var(--leaf-green);
   color: var(--off-white);
   border-radius: 50px;
   font-weight: 600;
   border: 2px solid var(--leaf-green);
   transition: all 0.3s;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #home .H-Btn:hover {
@@ -623,154 +904,196 @@ footer .social-links a:hover {
   justify-content: center;
   align-items: center;
   min-width: 0;
+  width: 100%;
 }
 
 #home .right img {
   width: 100%;
-  max-width: 500px;
+  max-width: 250px;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transform: rotate(3deg) translateX(-40px) translateY(-20px) scale(0.98);
-  transition: transform 0.5s;
+  transform: rotate(3deg) scale(0.98);
+  transition: transform 0.3s;
   cursor: pointer;
 }
 
 #home .right img:hover {
-  transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+  transform: rotate(3deg) scale(1.02);
 }
 
 #home .right img.upright {
-  transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+  transform: rotate(0) scale(1.0);
 }
 
+/* Tablet and up */
+@media (min-width: 768px) {
+  #home {
+    padding: 3rem 1.5rem;
+    background: linear-gradient(to right, var(--off-white) 50%, var(--soft-pink) 50%);
+  }
 
-/* ==========================
-   Plush Pearl Stitches CSS – Swiper Optimized
-   ========================== */
+  #home .divide {
+    flex-direction: row;
+    gap: 2rem;
+  }
 
-/* ================================
-   Swiper Slides & Cards
-================================ */
-.swiper {
-  padding: 2rem 0;
+  #home .left { 
+    padding-right: 1.5rem;
+    text-align: left;
+  }
+
+  #home .left h1 {
+    font-size: 2rem;
+  }
+
+  #home .left p {
+    font-size: 0.95rem;
+  }
+
+  #home .head-btn { 
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  #home .H-Btn {
+    width: auto;
+    max-width: none;
+  }
+
+  #home .right img {
+    max-width: 350px;
+    transform: rotate(3deg) translateX(-20px) translateY(-10px) scale(0.98);
+  }
+
+  #home .right img:hover {
+    transform: rotate(0) scale(1.0) translateX(-40px) translateY(-10px);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  #home {
+    padding: 4rem 5%;
+  }
+
+  #home .divide {
+    gap: 2rem;
+  }
+
+  #home .left { 
+    padding-right: 3rem;
+  }
+
+  #home .left h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #home .left p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  #home .right img {
+    max-width: 500px;
+    transform: rotate(3deg) translateX(-40px) translateY(-20px) scale(0.98);
+  }
+
+  #home .right img:hover {
+    transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+  }
+
+  #home .right img.upright {
+    transform: rotate(0) scale(1.0) translateX(-80px) translateY(-20px);
+  }
+}
+
+/* Mobile menu toggle styles */
+#menu-toggle {
+  display: none !important;
+}
+
+#menu-toggle:checked ~ .nav-listing {
+  display: flex !important;
+}
+
+/* Mobile menu dropdown positioning */
+@media (max-width: 767px) {
+  .nav-listing {
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--off-white);
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    margin-top: 0.5rem;
+  }
   
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  height: 400px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  max-width: 300px;
-  width: 100%;
-  padding: 1.5rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.card img {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.card-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.b-title {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--charcoal);
-}
-
-.b-text {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  color: var(--charcoal);
-}
-
-/* Product Swiper Card Consistency */
-#menu .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  width: 300px;
-  height: 400px;
-}
-
-#menu .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  height: 100%;
-  max-width: 300px;
-  width: 100%;
-  padding: 1.5rem;
-  background: var(--off-white);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-#menu .card img {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-#menu .card-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  .nav-listing li a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    min-height: 44px;
+    width: 100%;
+  }
 }
 
 /* ================================
-   Swiper Navigation Buttons
+   Split Layout Utility
+================================ */
+.divide {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.divide .left,
+.divide .right {
+  flex: 1;
+}
+
+/* ================================
+   Swiper Navigation Buttons (Mobile-First)
 ================================ */
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: transparent !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   color: var(--leaf-green) !important;
-  width: 50px;
-  height: 50px;
-  border-radius: 0;
-  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-  border: 2px solid var(--leaf-green);
+  z-index: 20;
+  border: 2px solid var(--leaf-green) !important;
   display: flex !important;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0;
   font-weight: bold;
-  outline: none;
+  outline: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 !important;
+  cursor: pointer !important;
+}
+
+/* Show buttons on mobile with optimized sizing */
+@media (max-width: 575px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
 }
 
 .swiper-button-next::after,
@@ -782,33 +1105,38 @@ footer .social-links a:hover {
 
 .swiper-button-prev::before {
   content: '<' !important;
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: var(--leaf-green);
-  display: block;
+  color: inherit;
 }
 
 .swiper-button-next::before {
   content: '>' !important;
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: var(--leaf-green);
-  display: block;
+  color: inherit;
 }
 
 .swiper-button-next {
-  right: 10px;
+  right: 1rem;
 }
 
 .swiper-button-prev {
-  left: 10px;
+  left: 1rem;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   background-color: var(--leaf-green) !important;
   color: #fff !important;
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 3px 10px rgba(76, 122, 75, 0.25);
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: translateY(-50%) scale(0.98) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15) !important;
 }
 
 .swiper-button-next:hover::before,
@@ -818,147 +1146,77 @@ footer .social-links a:hover {
 
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.swiper-button-next.swiper-button-disabled:hover,
+.swiper-button-prev.swiper-button-disabled:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: var(--leaf-green) !important;
+  transform: translateY(-50%) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Show buttons on tablet */
+@media (min-width: 576px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+
+  .swiper-button-prev::before,
+  .swiper-button-next::before {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Enhanced buttons on desktop */
+@media (min-width: 992px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .swiper-button-prev::before,
+  .swiper-button-next::before {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+
+  .swiper-button-prev::before,
+  .swiper-button-next::before {
+    font-size: 1.8rem !important;
+  }
 }
 
 /* ================================
    Responsive Breakpoints
 ================================ */
-@media (max-width: 992px) {
-  .swiper-slide { width: 280px; }
-}
+/* All responsive styles are integrated above with media queries */
 
-@media (max-width: 768px) {
-  .swiper-slide { width: 240px; }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 40px;
-    height: 40px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .swiper-button-next::before,
-  .swiper-button-prev::before {
-    font-size: 1.4rem !important;
-  }
-}
-
-html {
-  scroll-padding-top: 80px;
-}
-
-section {
-  padding: 3rem 2rem;
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  scroll-margin-top: 80px;
-}
-
-.head {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.head::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  margin: 0.5rem auto 0;
-  background: var(--soft-pink);
-  border-radius: 2px;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
-}
-
-.divide {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.left-about,
-.right-about {
-  flex: 1;
-  padding: 1rem;
-}
-
-.left-about img {
-  max-width: 350px;
-  max-height: 480px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  max-width: 300px;
-  padding: 1.5rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-.card-content {
-  flex-grow: 1;
-}
-
-.card-content .b-title {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.card-content p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.social-links a i {
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
-  vertical-align: middle;
-}
-
-/* Purpose Section Typography */
+/* Purpose Section Typography (Mobile-First) */
 #purpose {
-  padding: 5rem 5%;
+  padding: 2rem 1rem;
   background-color: var(--off-white);
 }
 
@@ -969,245 +1227,51 @@ p {
 
 #purpose p, 
 #purpose ul {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
 #purpose h2 {
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
-/* ================================
-   Mobile / Small Tablet Overrides
-   Reduces header and hero sizes for better mobile fit
-================================ */
-@media (max-width: 900px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  header {
-    padding: 1rem 1.2rem;
-  }
-
-  .nav-left img {
-    height: 52px;
-  }
-
-  .header-brand h1 {
-    font-size: 1.3rem;
-  }
-
-  #home {
-    padding: 2rem 1.5rem;
-    min-height: 70vh;
-    background: var(--off-white);
-  }
-
-  #home .divide {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  #home .left {
-    padding-right: 0;
-  }
-
-  #home .left h1 {
-    font-size: 2rem;
-    line-height: 1.3;
-  }
-
-  #home .left p {
-    font-size: 0.95rem;
-  }
-
-  #home .H-Btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  #home .right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
-  #home .right img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    transform: rotate(3deg) scale(0.98);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-  }
-
-  #home .right img:hover,
-  #home .right img:active {
-    transform: rotate(3deg) scale(1.02);
-  }
-
-  /* About section adjustments */
-  #aboutus {
+/* Tablet and up */
+@media (min-width: 768px) {
+  #purpose {
     padding: 3rem 1.5rem;
   }
 
-  .left-about img {
-    max-width: 250px;
-    max-height: 350px;
-    margin: 0 auto 1.5rem;
-  }
-
-  .right-about h2 {
-    font-size: 1.6rem;
-  }
-
-  .right-about p {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Purpose section for tablet */
-  #purpose h2 {
-    font-size: 1.6rem;
-  }
-
-  #purpose p,
+  #purpose p, 
   #purpose ul {
     font-size: 1rem;
   }
 
-  /* Section general adjustments */
-  section {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .head {
-    font-size: 1.8rem;
+  #purpose h2 {
+    font-size: 1.6rem;
   }
 }
 
-@media (max-width: 480px) {
-  body {
-    overflow-x: hidden;
+/* Desktop and up */
+@media (min-width: 1024px) {
+  #purpose {
+    padding: 5rem 5%;
   }
 
-  header {
-    padding: 0.8rem 1rem;
-  }
-
-  .nav-left img {
-    height: 45px;
-    margin-right: 0.7rem;
-  }
-
-  .header-brand h1 {
-    font-size: 1.1rem;
-  }
-
-  .header-brand .tagline {
-    font-size: 0.8rem;
-  }
-
-  .nav-listing li a {
-    font-size: 0.95rem;
-  }
-
-  #home {
-    padding: 1.5rem 1rem;
-    min-height: 60vh;
-  }
-
-  #home .left h1 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-
-  #home .left p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-
-  #home .H-Btn {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.9rem;
-  }
-
-  #home .right img {
-    max-width: 250px;
-    transform: rotate(3deg) scale(0.98);
-    transition: transform 0.3s ease;
-  }
-
-  #home .right img:hover,
-  #home .right img:active {
-    transform: rotate(3deg) scale(1.02);
-  }
-
-  /* About section */
-  #aboutus {
-    padding: 2rem 1rem;
-  }
-
-  .left-about img {
-    max-width: 200px;
-    max-height: 300px;
-  }
-
-  .right-about h2 {
-    font-size: 1.5rem;
-  }
-
-  .right-about p {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Purpose section */
-  #purpose h2 {
-    font-size: 1.5rem;
-  }
-
-  #purpose p,
+  #purpose p, 
   #purpose ul {
-    font-size: 0.95rem;
-  }
-
-  /* Contact section */
-  .cnct-left h3 {
     font-size: 1.1rem;
   }
 
-  /* Sections */
-  section {
-    padding: 2rem 1rem;
+  #purpose h2 {
+    font-size: 1.9rem;
   }
+}
 
-  .head {
-    font-size: 1.6rem;
-  }
 
-  /* Contact form */
-  .input-row {
-    flex-direction: column;
-  }
-
-  input,
-  textarea,
-  select {
-    padding: 0.6rem;
-    width: 100%;
-  }
-
-  /* Contact section image */
-  .cnct-right img {
-    max-width: 350px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin-top: 2rem;
-  }
+/* Add additional helper styles */
+.social-links a i {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  vertical-align: middle;
 }

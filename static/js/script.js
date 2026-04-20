@@ -32,16 +32,11 @@ const swiper = new Swiper('.mySwiper', {
   loop: true,
   loopFillGroupWithBlank: false,
   grabCursor: true,
-
-  // Smooth momentum scrolling
   freeMode: true,
   freeModeMomentum: true,
   freeModeMomentumVelocityRatio: 0.5,
   freeModeMomentumRatio: 0.8,
-
-  speed: 600, // transition duration in ms
-
-  // Touch and Mouse Support
+  speed: 600,
   touchRatio: 1,
   touchAngle: 45,
   simulateTouch: true,
@@ -49,54 +44,75 @@ const swiper = new Swiper('.mySwiper', {
   longSwipes: true,
   longSwipesRatio: 0.5,
   longSwipesMs: 300,
-
   autoplay: isMobile() ? false : {
     delay: 2500,
     disableOnInteraction: false,
   },
-
-  keyboard: { enabled: true },
-
+  keyboard: {
+    enabled: true,
+  },
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
-
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-
   breakpoints: {
-    0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 15 },
-    576: { slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 20 },
-    992: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 }
-  }
+    0: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 15,
+    },
+    576: {
+      slidesPerView: 2,
+      slidesPerGroup: 1,
+      spaceBetween: 20,
+    },
+    992: {
+      slidesPerView: 3,
+      slidesPerGroup: 1,
+      spaceBetween: 30,
+    },
+  },
 });
 
-// Apply ease-in-out via CSS injection for wrapper
+// Inject CSS for ease-in-out transition timing
 const style = document.createElement('style');
-style.innerHTML = `
+style.textContent = `
   .swiper-wrapper {
-    transition-timing-function: ease-in-out !important;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   }
 `;
 document.head.appendChild(style);
 
-// Pause autoplay when tab is inactive
-document.addEventListener('visibilitychange', function() {
-  if (document.hidden) swiper.autoplay.stop();
-  else swiper.autoplay.start();
+// Pause autoplay when tab becomes hidden
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    swiper.autoplay.stop();
+  } else {
+    if (!isMobile()) {
+      swiper.autoplay.start();
+    }
+  }
 });
 
-// Pause autoplay on hover
-const swiperEl = document.querySelector('.mySwiper');
-swiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
-swiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
+// Pause autoplay on hover, resume on mouse leave
+const swiperEl = document.querySelector('.swiper');
+if (swiperEl) {
+  swiperEl.addEventListener('mouseenter', () => {
+    swiper.autoplay.stop();
+  });
 
-// ================================
-// 2b. Pause Autoplay on Card Image Click (Stop Swiping During Interaction)
-// ================================
+  swiperEl.addEventListener('mouseleave', () => {
+    if (!isMobile()) {
+      swiper.autoplay.start();
+    }
+  });
+}
+
+// Stop autoplay when GLightbox images are clicked
 const cardImages = document.querySelectorAll('.card-img a.glightbox');
 cardImages.forEach(link => {
   link.addEventListener('click', () => {
@@ -106,14 +122,22 @@ cardImages.forEach(link => {
 
 // Resume autoplay when scrolled away from Products section
 const menuSection = document.getElementById('menu');
-window.addEventListener('scroll', () => {
-  const rect = menuSection.getBoundingClientRect();
-  const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-  
-  // If scrolled away from Products section, resume autoplay
-  if (!isInView) {
-    swiper.autoplay.start();
-  }
+if (menuSection) {
+  window.addEventListener('scroll', () => {
+    const rect = menuSection.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    // If scrolled away from Products section, resume autoplay
+    if (!isInView && !isMobile()) {
+      swiper.autoplay.start();
+    }
+  });
+}
+
+// Apply smooth transitions via CSS
+document.addEventListener('DOMContentLoaded', () => {
+  // Swiper is ready
+  console.log('Swiper initialized smoothly with advanced features');
 });
 
 // ================================
